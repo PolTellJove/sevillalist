@@ -27,8 +27,17 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     // document.getElementById('deviceready').classList.add('ready');
 
-    $('#addButton').click(function()) {
-        alert( "Botó clickat!")
-    }
+    $('#addButton').click(function() {
+        let text = $("#newtask").val();
+        let newelem = $("<li><a href=''>"+text+"</a><button class='deleteButton'>Eliminar</button></li>");
+        $("ul").append(newelem);
+
+        // actualitzem estils
+        $(".ui-listview").listview("refresh");
+
+        $(".deleteButton").on('click', function() {
+            $(this).parent().remove();
+        });
+    });
 
 }
